@@ -1,34 +1,39 @@
-//第一个超时
 #include <bits/stdc++.h>
 using namespace std;
-int n, cnt = 0, a[15][15] = { 0 }, ans[15];
+int n, cnt = 0, a[15][15] = {0}, ans[15];
 void seta(int i, int j, int p)
 {
     ans[i] = j;
-    a[i][j] = 1;
+    a[i][j] += p;
     for (int k = 1; k <= n; k++) // 同行同列
     {
-        a[k][j] = p;
-        a[i][k] = p;
+        a[k][j] += p;
+        a[i][k] += p;
     }
-    for (int m = 1; m <= n; m++)
-    { // 副对角线方向
-        for (int l = 1; l <= n; l++)
-        {
-            if (m + l == i + j)
-                a[m][l] = p;
-            if (m - l == i - j) // 主对角线方向
-                a[m][l] = p;
-        }
-    }
-
+    // for (int m = 1; m <= n; m++)
+    // { // 副对角线方向
+    //     for (int l = 1; l <= n; l++)
+    //     {
+    //         if (m + l == i + j)
+    //             a[m][l] += p;
+    //         if (m - l == i - j) // 主对角线方向
+    //             a[m][l] += p;
+    //     }
+    // }
+    int x = i + 1, y = j + 1;		//修改时只需要修改往下的部分即可
+    while (x <= n && y <= n)
+        a[x][y] += p, x++, y++;
+    x = i + 1, y = j - 1;
+    while (x <= n && y)
+        a[x][y] += p, x++, y--;
 }
 void dfs(int pos)
 {
     if (pos == n + 1)
     {
         cnt += 1;
-        if (cnt <= 3) {
+        if (cnt <= 3)
+        {
             for (int i = 1; i <= n; i++)
                 cout << ans[i] << " ";
             cout << endl;
@@ -40,11 +45,9 @@ void dfs(int pos)
         {
             if (!a[pos][j])
             {
-                int b[15][15] = { 0 };
-                memcpy(b, a, sizeof(a));
                 seta(pos, j, 1);
                 dfs(pos + 1);
-                memcpy(a, b, sizeof(a));
+                seta(pos, j, -1);
             }
         }
     }
@@ -56,7 +59,6 @@ int main()
     cout << cnt;
     return 0;
 }
-
 
 
 
