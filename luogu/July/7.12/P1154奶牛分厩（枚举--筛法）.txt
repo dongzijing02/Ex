@@ -1,3 +1,4 @@
+//不在同一个厩中-->说明几个数mod同一个数字余数不同-->几个数字差不同
 #include<bits.stdc++.h>
 using namespace std;
 const int N = 5010, K = 1000010;

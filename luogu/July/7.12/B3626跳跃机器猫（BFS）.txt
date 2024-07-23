@@ -1,3 +1,4 @@
+//调整题目，从前向后跳
 #include <bits/stdc++.h>
 using namespace std;
 int a[1000010] = { 0 };

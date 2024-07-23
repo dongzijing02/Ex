@@ -1,5 +1,3 @@
-c
-
 #include <bits/stdc++.h>
 using namespace std;
 double maxw, len, dp[1010] = { 0 }; 

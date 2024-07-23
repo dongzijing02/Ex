@@ -1,3 +1,4 @@
+//向下搜索，打标记时只需要向下标记，回溯时也不会影响之前的标记
 #include <bits/stdc++.h>
 using namespace std;
 int n, cnt = 0, a[15][15] = {0}, ans[15];

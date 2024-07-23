@@ -1,3 +1,4 @@
+//可以使用dfs搜索，也可以暴力循环求解
 #include<bits/stdc++.h>
 using namespace std;
 int target, cnt = 0, a[100000][15] = { 0 };
@@ -10,7 +11,7 @@ void dfs(int pos,int total) {
 		return;
 	if (total == target && pos == 11) {
 		cnt++;
-		memcpy(a[cnt], a[cnt - 1], sizeof(a[cnt]));
+		memcpy(a[cnt], a[cnt - 1], sizeof(a[cnt]));//存储上一次的解为下一次撒佐料做前需准备
 	}
 	for (int j = 1; j <= 3; j++) {
 			a[cnt][pos] = j;

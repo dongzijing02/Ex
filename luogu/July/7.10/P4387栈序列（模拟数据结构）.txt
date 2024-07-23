@@ -1,3 +1,4 @@
+//a序列先进栈，如果b中序列等于栈顶就开始pop，直至不同，如果s空了就符合
 #include <bits/stdc++.h>
 using namespace std;
 int main()

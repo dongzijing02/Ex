@@ -1,3 +1,4 @@
+//先对小猫体重排序，之后对缆车负重进行贪心
 #include<bits/stdc++.h>
 using namespace std;
 int a[20] = { 0 }, sum[20] = { 0 }, n, maxw, ans = 2000;
