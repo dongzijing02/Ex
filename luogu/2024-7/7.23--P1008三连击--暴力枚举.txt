@@ -19,7 +19,7 @@ int main()
 {
     int l, j, k,i=123;
 p1:
-    for (i; i <= 327; i++)
+    for (i; i <= 333; i++)
     {
         if (i% 10 == 0)continue;
         int a[10] = { 0 };
