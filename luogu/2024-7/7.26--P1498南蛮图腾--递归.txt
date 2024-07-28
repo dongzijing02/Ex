@@ -1,3 +1,4 @@
+//向右复制再向上复制
 #include<bits/stdc++.h>
 using namespace std;
 int n;
