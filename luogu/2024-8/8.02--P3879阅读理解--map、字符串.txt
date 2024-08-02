@@ -1,0 +1,60 @@
+//tle
+#include<bits/stdc++.h>
+using namespace std;
+int n, m, msize;
+string temp;
+map<int, map<int, string>>mymap;
+int main() {
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		cin >> msize;
+		for (int j = 1; j <= msize; j++) 
+			cin >> mymap[i][j];
+	}
+	cin >> m; 
+	for (int i = 1; i <= m; i++) {
+		cin >> temp;
+		for (int i = 1; i <= n; i++) 
+			for (int j = 1; j <= mymap[i].size(); j++) 
+				if (temp == mymap[i][j]) {
+					cout << i << " ";
+					break;
+				}
+		
+		cout << endl;
+	}
+	return 0;
+}
+
+//题目核心是短文序号，将短文序号放在一起
+#include<bits/stdc++.h>
+using namespace std;
+int n, m, msize;
+string ms;
+map<string, vector<int>>mymap;
+int main() {
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		cin >> msize;
+		for (int j = 1; j <= msize; j++) {
+			cin >> ms;
+			mymap[ms].push_back(i);
+		}
+	}
+	cin >> m;
+	for (int i = 1; i <= m; i++) {
+		cin >> ms;
+		int now = 0;
+		for (int j = 0; j < mymap[ms].size(); j++) {
+			if(now != mymap[ms][j])
+				if (j == mymap[ms].size() - 1)
+					cout << mymap[ms][j];
+				else
+					cout << mymap[ms][j] << " ";
+			now = mymap[ms][j];
+		}
+		if (i != m)
+			cout << endl;
+	}
+	return 0;
+}
