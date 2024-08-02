@@ -16,7 +16,7 @@ typedef struct TreeNode {
 //若 root 的权值小于 value，在 root 的右子树中插入权值为 value 的节点
 TreeNode* insert(TreeNode* node, int value) {  
     if (node == NULL) 
-        //使用c++语法烧写一个create函数
+        //使用c++语法少写一个create函数
         return new TreeNode(value);
     if (value < node->key)  
         node->left = insert(node->left, value);  
