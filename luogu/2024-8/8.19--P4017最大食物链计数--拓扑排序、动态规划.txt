@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>  
+using namespace std;  
+
+int n, m, prey, predator, total = 0;  
+int ans[5005] = {0};  
+vector<int> s[5005];  
+int prey_num[5005] = {0}, predator_num[5005] = {0};  
+
+void dfs(int i) {  
+    // 遍历当前生物的捕食者  
+    for (int prey : s[i]) {  
+        ans[prey] += ans[i];  
+        predator_num[prey]--;  
+        // 如果没有捕食者了，递归处理这个捕食者  
+        if (predator_num[prey] == 0) {  
+            dfs(prey);  
+        }  
+    }  
+}  
+
+int main() {  
+    cin >> n >> m;  
+    
+    // 反向建图  
+    for (int i = 1; i <= m; i++) {  
+        cin >> prey >> predator;  
+        prey_num[predator]++;  
+        predator_num[prey]++;  
+        s[predator].push_back(prey);  
+    }  
+
+    // 初始化没有捕食者的生物  
+    for (int i = 1; i <= n; i++) {  
+        if (predator_num[i] == 0) {  
+            ans[i] = 1; // 初始化能被捕食的基础数量  
+            dfs(i); // 从这生物出发，更新相关捕食者数量  
+        }  
+    }  
+
+    // 总计食物链中没有捕食者的生物数量  
+    for (int i = 1; i <= n; i++) {  
+        if (prey_num[i] == 0) {  
+            total += ans[i];  
+        }  
+    }  
+
+    cout << (total % 80112002);  
+    return 0;  
+}
