@@ -1,0 +1,27 @@
+//数据太水，暴力枚举可以过
+#include<bits/stdc++.h>
+using namespace std;
+int n, m, x, y;
+int a[1005][1005] = { 0 };
+struct {
+	//左上、右下
+	int xl, ya;
+	int xr, yd;
+}p[1005];
+int main() {
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		cin >> p[i].xl >> p[i].ya >> p[i].xr >> p[i].yd;
+		for (int j = p[i].xl; j <= p[i].xr; j++) {
+			for (int k = p[i].ya; k <= p[i].yd; k++) {
+				a[j][k] = a[j][k] + 1;
+			}
+		}
+	}
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
